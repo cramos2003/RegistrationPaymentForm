@@ -1,0 +1,144 @@
+:root {
+    --bg-main: #0b1020;
+    --bg-card: #11162a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #c7d2fe;
+    --text-muted: #94a3b8;
+    --accent-primary: #7dd3fc;
+    --accent-hover: #bae6fd;
+    --border-soft: rgba(255, 255, 255, 0.12);
+}
+
+
+/* RESET / BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.body-container {
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    background: radial-gradient(circle at top,
+            #12183a 0%,
+            var(--bg-main) 45%);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* CONTAINER */
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+}
+
+/* HERO */
+.home-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hero-title {
+    color: var(--text-primary);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* OPTIONS GRID */
+.registration-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+/* CARD */
+.registration-card {
+    background: var(--bg-card);
+    border-radius: 18px;
+    padding: 2.2rem;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-soft);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
+}
+
+.registration-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.registration-card:hover::before {
+    opacity: 1;
+}
+
+.registration-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ICON */
+.card-icon {
+    font-size: 2.6rem;
+    margin-bottom: 1.2rem;
+}
+
+/* TEXT */
+.card-title {
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 1.8rem;
+}
+
+/* CTA */
+.card-cta {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--accent-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.registration-card:hover .card-cta {
+    color: var(--accent-hover);
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+    .home-container {
+        padding: 3rem 1rem;
+    }
+
+    .registration-card {
+        padding: 1.8rem;
+    }
+}
