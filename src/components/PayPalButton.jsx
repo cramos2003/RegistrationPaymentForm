@@ -12,7 +12,7 @@ export default function PayPalButton({ formData, onSuccess }) {
             .Buttons({
                 // SERVER-SIDE: ORDER CREATION
                 createOrder: async () => {
-                    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/orders/create`, {
+                    const res = await fetch("https://registrationpaymentformbackend.onrender.com/orders/create", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export default function PayPalButton({ formData, onSuccess }) {
                 // APPROVAL HANDLED BY WEBHOOK
                 onApprove: async (data) => {
                     console.log("Order approved:", data.orderID);
-                    await fetch(`${import.meta.env.VITE_API_BASE_URL}/orders/capture/${data.orderID}`, {
+                    await fetch(`https://registrationpaymentformbackend.onrender.com/orders/capture/${data.orderID}`, {
                         method: "POST"
                     });
                     onSuccess?.(data.orderID);
